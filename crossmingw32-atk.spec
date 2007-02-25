@@ -69,10 +69,10 @@ export PKG_CONFIG_PATH=%{_prefix}/lib/pkgconfig
 %{__autoheader}
 %{__automake}
 %configure \
-	AR="%{target}-ar" \
-	RANLIB="%{target}-ranlib" \
 	--target=%{target} \
-	--host=%{target}
+	--host=%{target} \
+	--disable-gtk-doc \
+	--enable-static
 
 %{__make}
 
@@ -92,5 +92,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS NEWS README
 %{_libdir}/lib*.la
 %{_libdir}/lib*.a
+%{_bindir}/*.dll
 %{_includedir}/atk*
 %{_pkgconfigdir}/atk*
