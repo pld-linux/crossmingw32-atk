@@ -1,8 +1,8 @@
 #
 %define		_realname   atk
 Summary:	ATK - Accessibility Toolkit - cross Mingw32 version
-Summary(pl.UTF-8):ATK - biblioteka ułatwiająca niepełnosprawnym korzystanie z komputerów - wersja skrośna dla Mingw32
-Summary(pt_BR.UTF-8):Interfaces para suporte a acessibilidade
+Summary(pl.UTF-8):	ATK - biblioteka ułatwiająca niepełnosprawnym korzystanie z komputerów - wersja skrośna dla Mingw32
+Summary(pt_BR.UTF-8):	Interfaces para suporte a acessibilidade
 Name:		crossmingw32-%{_realname}
 Version:	1.12.4
 Release:	1
