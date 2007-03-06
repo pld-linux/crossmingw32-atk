@@ -1,23 +1,21 @@
-#
 %define		_realname   atk
 Summary:	ATK - Accessibility Toolkit - cross Mingw32 version
 Summary(pl.UTF-8):	ATK - biblioteka ułatwiająca niepełnosprawnym korzystanie z komputerów - wersja skrośna dla Mingw32
-Summary(pt_BR.UTF-8):	Interfaces para suporte a acessibilidade
 Name:		crossmingw32-%{_realname}
 Version:	1.12.4
 Release:	1
 License:	LGPL v2+
-Group:		X11/Libraries
+Group:		Development/Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/atk/1.12/%{_realname}-%{version}.tar.bz2
 # Source0-md5:	0a2c6a7bbc380e3a3d94e9061f76a849
 URL:		http://developer.gnome.org/projects/gap/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
-BuildRequires:	crossmingw32-gettext
+BuildRequires:	crossmingw32-gcc
 BuildRequires:	crossmingw32-glib2 >= 2.12.4
-BuildRequires:	crossmingw32-pkgconfig
 BuildRequires:	libtool >= 2:1.5.16
 BuildRequires:	perl-base
+BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires:	crossmingw32-glib2 >= 2.12.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -27,12 +25,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		target			i386-mingw32
 %define		target_platform 	i386-pc-mingw32
 %define		arch			%{_prefix}/%{target}
-%define		gccarch			%{_prefix}/lib/gcc-lib/%{target}
-%define		gcclib			%{_prefix}/lib/gcc-lib/%{target}/%{version}
 
 %define		_sysprefix		/usr
 %define		_prefix			%{_sysprefix}/%{target}
 %define		_pkgconfigdir		%{_prefix}/lib/pkgconfig
+%define		_dlldir			/usr/share/wine/windows/system
 %define		__cc			%{target}-gcc
 %define		__cxx			%{target}-g++
 
@@ -43,6 +40,8 @@ supporting the ATK interfaces, an application or toolkit can be used
 as tools such as screen readers and magnifiers, and alternative input
 devices.
 
+This package contains the cross version for Win32.
+
 %description -l pl.UTF-8
 Biblioteka ATK udostępnia zestaw interfejsów ułatwiających
 niepełnosprawnym korzystanie z aplikacji i poszczególnych elementów
@@ -51,12 +50,32 @@ interfejsów ATK, aplikacja lub element interfejsu może być używany
 z takimi narzędziami jak czytniki ekranu i narzędzia powiększające
 oraz alternatywnymi urządzeniami wejściowymi.
 
-%description -l pt_BR.UTF-8
-A biblioteca ATK provê um conjunto de interfaces para adicionar
-suporte a acessibilidade para aplicações e interfaces gráficas.
-Suportando a interface ATK, uma aplicação ou interface gráfica pode
-ser utilizada como ferramentas de leitura e aumento de tela,
-dispositivos de entrada alternativos, etc.
+Ten pakiet zawiera wersję skrośną dla Win32.
+
+%package static
+Summary:	Static atk library (cross mingw32 version)
+Summary(pl.UTF-8):	Statyczna biblioteka atk (wersja skrośna mingw32)
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description static
+Static atk library (cross mingw32 version).
+
+%description static -l pl.UTF-8
+Statyczna biblioteka atk (wersja skrośna mingw32).
+
+%package dll
+Summary:	DLL atk library for Windows
+Summary(pl.UTF-8):	Biblioteka DLL atk dla Windows
+Group:		Applications/Emulators
+Requires:	crossmingw32-glib2-dll >= 2.12.4
+Requires:	wine
+
+%description dll
+DLL atk library for Windows.
+
+%description dll -l pl.UTF-8
+Biblioteka DLL atk dla Windows.
 
 %prep
 %setup -q -n %{_realname}-%{version}
@@ -82,16 +101,34 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang atk10
+install -d $RPM_BUILD_ROOT%{_dlldir}
+mv -f $RPM_BUILD_ROOT%{_prefix}/bin/*.dll $RPM_BUILD_ROOT%{_dlldir}
+
+%if 0%{!?debug:1}
+%{target}-strip --strip-unneeded -R.comment -R.note $RPM_BUILD_ROOT%{_dlldir}/*.dll
+%{target}-strip -g -R.comment -R.note $RPM_BUILD_ROOT%{_libdir}/*.a
+%endif
+
+rm -rf $RPM_BUILD_ROOT%{_datadir}/gtk-doc
+# runtime
+rm -rf $RPM_BUILD_ROOT%{_datadir}/locale
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f atk10.lang
+%files
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README
-%{_libdir}/lib*.la
-%{_libdir}/lib*.a
-%{_bindir}/*.dll
-%{_includedir}/atk*
+%{_libdir}/libatk-1.0.dll.a
+%{_libdir}/libatk-1.0.la
+%{_libdir}/atk-1.0.def
+%{_includedir}/atk-1.0
 %{_pkgconfigdir}/atk*
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/libatk-1.0.a
+
+%files dll
+%defattr(644,root,root,755)
+%{_dlldir}/libatk-1.0-*.dll
