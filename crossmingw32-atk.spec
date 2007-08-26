@@ -6,7 +6,7 @@ Version:	1.18.0
 Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/atk/1.18/%{_realname}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/1.18/%{_realname}-%{version}.tar.bz2
 # Source0-md5:	9fc33ec48fd32933f7f630479dfad667
 URL:		http://developer.gnome.org/projects/gap/
 BuildRequires:	autoconf >= 2.54
