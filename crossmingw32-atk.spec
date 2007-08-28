@@ -15,7 +15,7 @@ BuildRequires:	crossmingw32-gcc
 BuildRequires:	crossmingw32-glib2 >= 2.12.11
 BuildRequires:	libtool >= 2:1.5.16
 BuildRequires:	perl-base
-BuildRequires:	pkgconfig
+BuildRequires:	pkgconfig >= 1:0.15
 BuildRequires:	rpmbuild(macros) >= 1.197
 Requires:	crossmingw32-glib2 >= 2.12.11
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -24,7 +24,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		target			i386-mingw32
 %define		target_platform 	i386-pc-mingw32
-%define		arch			%{_prefix}/%{target}
 
 %define		_sysprefix		/usr
 %define		_prefix			%{_sysprefix}/%{target}
@@ -81,7 +80,7 @@ Biblioteka DLL atk dla Windows.
 %setup -q -n %{_realname}-%{version}
 
 %build
-export PKG_CONFIG_PATH=%{_prefix}/lib/pkgconfig
+export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
