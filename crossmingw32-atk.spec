@@ -1,12 +1,12 @@
-%define		_realname   atk
+%define		realname   atk
 Summary:	ATK - Accessibility Toolkit - cross Mingw32 version
 Summary(pl.UTF-8):	ATK - biblioteka ułatwiająca niepełnosprawnym korzystanie z komputerów - wersja skrośna dla Mingw32
-Name:		crossmingw32-%{_realname}
+Name:		crossmingw32-%{realname}
 Version:	1.20.0
 Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/1.20/%{_realname}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/1.20/%{realname}-%{version}.tar.bz2
 # Source0-md5:	b1a9e28d9f54ea306bd85a4c84b25fb8
 URL:		http://developer.gnome.org/projects/gap/
 BuildRequires:	autoconf >= 2.54
@@ -27,6 +27,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysprefix		/usr
 %define		_prefix			%{_sysprefix}/%{target}
+%define		_libdir			%{_prefix}/lib
 %define		_pkgconfigdir		%{_prefix}/lib/pkgconfig
 %define		_dlldir			/usr/share/wine/windows/system
 %define		__cc			%{target}-gcc
@@ -77,7 +78,7 @@ DLL atk library for Windows.
 Biblioteka DLL atk dla Windows.
 
 %prep
-%setup -q -n %{_realname}-%{version}
+%setup -q -n %{realname}-%{version}
 
 %build
 export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig
