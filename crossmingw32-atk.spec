@@ -2,23 +2,23 @@
 Summary:	ATK - Accessibility Toolkit - cross Mingw32 version
 Summary(pl.UTF-8):	ATK - biblioteka ułatwiająca niepełnosprawnym korzystanie z komputerów - wersja skrośna dla Mingw32
 Name:		crossmingw32-%{realname}
-Version:	1.24.0
+Version:	1.26.0
 Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/1.24/%{realname}-%{version}.tar.bz2
-# Source0-md5:	fb0ee9c7f18b15b490a0168b13740a4d
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/1.26/%{realname}-%{version}.tar.bz2
+# Source0-md5:	719229408019c548855673840679f156
 URL:		http://developer.gnome.org/projects/gap/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
 BuildRequires:	crossmingw32-gcc
-BuildRequires:	crossmingw32-glib2 >= 2.16.0
+BuildRequires:	crossmingw32-glib2 >= 2.20.0
 BuildRequires:	libtool >= 2:1.5.16
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	sed >= 4.0
-Requires:	crossmingw32-glib2 >= 2.16.0
+Requires:	crossmingw32-glib2 >= 2.20.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		no_install_post_strip	1
@@ -76,7 +76,7 @@ Statyczna biblioteka atk (wersja skrośna mingw32).
 Summary:	DLL atk library for Windows
 Summary(pl.UTF-8):	Biblioteka DLL atk dla Windows
 Group:		Applications/Emulators
-Requires:	crossmingw32-glib2-dll >= 2.16.0
+Requires:	crossmingw32-glib2-dll >= 2.20.0
 Requires:	wine
 
 %description dll
