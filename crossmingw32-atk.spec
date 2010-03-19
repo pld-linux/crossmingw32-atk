@@ -2,12 +2,12 @@
 Summary:	ATK - Accessibility Toolkit - cross Mingw32 version
 Summary(pl.UTF-8):	ATK - biblioteka ułatwiająca niepełnosprawnym korzystanie z komputerów - wersja skrośna dla Mingw32
 Name:		crossmingw32-%{realname}
-Version:	1.26.0
+Version:	1.28.0
 Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/1.26/%{realname}-%{version}.tar.bz2
-# Source0-md5:	719229408019c548855673840679f156
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/1.28/%{realname}-%{version}.tar.bz2
+# Source0-md5:	010a85478adc053c016a0a5c9bb52004
 URL:		http://developer.gnome.org/projects/gap/
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake
