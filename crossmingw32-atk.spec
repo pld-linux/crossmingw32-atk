@@ -1,6 +1,6 @@
 %define		realname   atk
-Summary:	ATK - Accessibility Toolkit - cross Mingw32 version
-Summary(pl.UTF-8):	ATK - biblioteka ułatwiająca niepełnosprawnym korzystanie z komputerów - wersja skrośna dla Mingw32
+Summary:	ATK - Accessibility Toolkit - cross MinGW32 version
+Summary(pl.UTF-8):	ATK - biblioteka ułatwiająca niepełnosprawnym korzystanie z komputerów - wersja skrośna dla MinGW32
 Name:		crossmingw32-%{realname}
 Version:	1.30.0
 Release:	1
@@ -61,16 +61,16 @@ alternatywnymi urządzeniami wejściowymi.
 Ten pakiet zawiera wersję skrośną dla Win32.
 
 %package static
-Summary:	Static atk library (cross mingw32 version)
-Summary(pl.UTF-8):	Statyczna biblioteka atk (wersja skrośna mingw32)
+Summary:	Static atk library (cross MinGW32 version)
+Summary(pl.UTF-8):	Statyczna biblioteka atk (wersja skrośna MinGW32)
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description static
-Static atk library (cross mingw32 version).
+Static atk library (cross MinGW32 version).
 
 %description static -l pl.UTF-8
-Statyczna biblioteka atk (wersja skrośna mingw32).
+Statyczna biblioteka atk (wersja skrośna MinGW32).
 
 %package dll
 Summary:	DLL atk library for Windows
