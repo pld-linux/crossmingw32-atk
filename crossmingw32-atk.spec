@@ -6,7 +6,7 @@ Version:	1.32.0
 Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/1.30/%{realname}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/1.32/%{realname}-%{version}.tar.bz2
 # Source0-md5:	b9a19a3e426cd9ca930f0108c4ee343f
 URL:		http://library.gnome.org/devel/atk/
 BuildRequires:	autoconf >= 2.62
