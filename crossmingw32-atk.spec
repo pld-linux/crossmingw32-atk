@@ -2,22 +2,21 @@
 Summary:	ATK - Accessibility Toolkit - cross MinGW32 version
 Summary(pl.UTF-8):	ATK - biblioteka ułatwiająca niepełnosprawnym korzystanie z komputerów - wersja skrośna dla MinGW32
 Name:		crossmingw32-%{realname}
-Version:	1.32.0
+Version:	2.0.0
 Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/1.32/%{realname}-%{version}.tar.bz2
-# Source0-md5:	b9a19a3e426cd9ca930f0108c4ee343f
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/2.0/%{realname}-%{version}.tar.bz2
+# Source0-md5:	f9a0efa29c38c9a35ec83b7f460fce9b
 URL:		http://library.gnome.org/devel/atk/
-BuildRequires:	autoconf >= 2.62
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.63
+BuildRequires:	automake >= 1:1.10
 BuildRequires:	crossmingw32-gcc
 BuildRequires:	crossmingw32-glib2 >= 2.20.0
 BuildRequires:	libtool >= 2:1.5.16
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15
 BuildRequires:	rpmbuild(macros) >= 1.197
-BuildRequires:	sed >= 4.0
 Requires:	crossmingw32-glib2 >= 2.20.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -87,9 +86,6 @@ Biblioteka DLL atk dla Windows.
 
 %prep
 %setup -q -n %{realname}-%{version}
-
-# workaround for libtool which calls AC_CANONICAL_HOST too late
-sed -i -e '/AC_PROG_CC/iAC_CANONICAL_HOST' configure.in
 
 %build
 export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig
