@@ -2,21 +2,23 @@
 Summary:	ATK - Accessibility Toolkit - cross MinGW32 version
 Summary(pl.UTF-8):	ATK - biblioteka ułatwiająca niepełnosprawnym korzystanie z komputerów - wersja skrośna dla MinGW32
 Name:		crossmingw32-%{realname}
-Version:	2.0.1
+Version:	2.2.0
 Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/2.0/%{realname}-%{version}.tar.bz2
-# Source0-md5:	87f20b78deaedef858ac54358c0786b1
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/2.2/%{realname}-%{version}.tar.xz
+# Source0-md5:	377ab03f5a1c32141fd9dfa86c6a714a
 URL:		http://library.gnome.org/devel/atk/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.10
 BuildRequires:	crossmingw32-gcc
 BuildRequires:	crossmingw32-glib2 >= 2.20.0
-BuildRequires:	libtool >= 2:1.5.16
+BuildRequires:	libtool >= 2:2.2
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.15
 BuildRequires:	rpmbuild(macros) >= 1.197
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 Requires:	crossmingw32-glib2 >= 2.20.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -98,6 +100,7 @@ export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig
 	--target=%{target} \
 	--host=%{target} \
 	--disable-gtk-doc \
+	--disable-silent-rules \
 	--enable-static
 
 %{__make}
@@ -116,9 +119,9 @@ mv -f $RPM_BUILD_ROOT%{_prefix}/bin/*.dll $RPM_BUILD_ROOT%{_dlldir}
 %{target}-strip -g -R.comment -R.note $RPM_BUILD_ROOT%{_libdir}/*.a
 %endif
 
-rm -rf $RPM_BUILD_ROOT%{_datadir}/gtk-doc
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/gtk-doc
 # runtime
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale
 
 %clean
 rm -rf $RPM_BUILD_ROOT
