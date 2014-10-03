@@ -2,12 +2,12 @@
 Summary:	ATK - Accessibility Toolkit - cross MinGW32 version
 Summary(pl.UTF-8):	ATK - biblioteka ułatwiająca niepełnosprawnym korzystanie z komputerów - wersja skrośna dla MinGW32
 Name:		crossmingw32-%{realname}
-Version:	2.12.0
+Version:	2.14.0
 Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/2.12/%{realname}-%{version}.tar.xz
-# Source0-md5:	930238dec55fdbf8eda9975b44f07b76
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/2.14/%{realname}-%{version}.tar.xz
+# Source0-md5:	ecb7ca8469a5650581b1227d78051b8b
 URL:		https://developer.gnome.org/atk/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.10
@@ -134,7 +134,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS NEWS README
 %{_libdir}/libatk-1.0.dll.a
 %{_libdir}/libatk-1.0.la
-%{_libdir}/atk-1.0.def
 %{_includedir}/atk-1.0
 %{_pkgconfigdir}/atk.pc
 
