@@ -3,7 +3,7 @@ Summary:	ATK - Accessibility Toolkit - cross MinGW32 version
 Summary(pl.UTF-8):	ATK - biblioteka ułatwiająca niepełnosprawnym korzystanie z komputerów - wersja skrośna dla MinGW32
 Name:		crossmingw32-%{realname}
 Version:	2.16.0
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Development/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/2.16/%{realname}-%{version}.tar.xz
