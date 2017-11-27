@@ -2,15 +2,15 @@
 Summary:	ATK - Accessibility Toolkit - cross MinGW32 version
 Summary(pl.UTF-8):	ATK - biblioteka ułatwiająca niepełnosprawnym korzystanie z komputerów - wersja skrośna dla MinGW32
 Name:		crossmingw32-%{realname}
-Version:	2.24.0
+Version:	2.26.1
 Release:	1
 License:	LGPL v2+
 Group:		Development/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/2.24/%{realname}-%{version}.tar.xz
-# Source0-md5:	3747a80089dfa3c0bbcf21adfff9968b
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/atk/2.26/%{realname}-%{version}.tar.xz
+# Source0-md5:	7cddcc313b9a3efd19b2ddf079ba68f5
 URL:		https://developer.gnome.org/atk/
 BuildRequires:	autoconf >= 2.63
-BuildRequires:	automake >= 1:1.10
+BuildRequires:	automake >= 1:1.11
 BuildRequires:	crossmingw32-gcc
 BuildRequires:	crossmingw32-glib2 >= 2.32.0
 BuildRequires:	libtool >= 2:2.2
@@ -116,7 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_dlldir}
-mv -f $RPM_BUILD_ROOT%{_prefix}/bin/*.dll $RPM_BUILD_ROOT%{_dlldir}
+%{__mv} $RPM_BUILD_ROOT%{_prefix}/bin/*.dll $RPM_BUILD_ROOT%{_dlldir}
 
 %if 0%{!?debug:1}
 %{target}-strip --strip-unneeded -R.comment -R.note $RPM_BUILD_ROOT%{_dlldir}/*.dll
