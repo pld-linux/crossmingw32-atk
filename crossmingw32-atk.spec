@@ -112,17 +112,17 @@ EOF
 
 %build
 export PKG_CONFIG_LIBDIR=%{_prefix}/lib/pkgconfig
-%meson build \
+%meson \
 	--cross-file meson-cross.txt \
 	-Ddocs=false \
 	-Dintrospection=false
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 install -d $RPM_BUILD_ROOT%{_dlldir}
 %{__mv} $RPM_BUILD_ROOT%{_prefix}/bin/*.dll $RPM_BUILD_ROOT%{_dlldir}
